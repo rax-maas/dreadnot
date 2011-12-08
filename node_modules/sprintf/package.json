@@ -1,0 +1,14 @@
+{
+    "name": "sprintf",
+    "version": "0.1.1",
+    "engines": {
+        "node" : ">=0.2.4" 
+    },
+    "author": "Moritz Peters",
+    "directories": {
+        "lib": "./lib"
+    },
+    "description": "Sprintf() for node.js",
+    "main": "./lib/sprintf"
+}
+

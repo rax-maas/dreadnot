@@ -1,0 +1,23 @@
+{
+  "name": "dreadnot",
+  "contributors": [
+    "Russell Haering <russellhaering@gmail.com>",
+    "Ryan Phillips <ryan.phillips@rackspace.com>",
+    "Brandon Philips <brandon@ifup.org>"
+  ],
+  "version": "0.1.0",
+  "dependencies": {
+    "async": "0.1.12",
+    "connect": "1.7.x",
+    "express": "2.4.7",
+    "logmagic": "0.1.4",
+    "sprintf": "0.1.1",
+    "jade": "0.16.3",
+    "optimist": "0.2.0",
+    "mkdirp": "0.2.1",
+    "request": "2.2.5",
+    "socket.io": "0.8.7",
+    "irc": "0.3.3",
+    "emailjs": "0.1.19"
+  }
+}

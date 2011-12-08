@@ -1,0 +1,40 @@
+extends layout
+
+block title
+  h1 #{data.stack.name}:#{data.name}
+
+block upnav
+  a(href='/') &larr; back to #{data.env.name}
+
+block content
+  form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}/deploy')
+    p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
+    p
+      input(type='hidden', name='to_revision', value='#{data.stack.latest_revision}')
+      input(type='submit', value='Deploy').btn.success
+
+  if data.deployments.length === 0
+    p No Deployments
+  else
+    table
+      tr
+        th \#
+        th Time
+        th User
+        th Revisions
+        th Result
+      - each deployment in data.deployments
+        tr
+          td
+            a(href='/stacks/#{data.stack.name}/regions/#{data.name}/deployments/#{deployment.name}') #{deployment.name}
+          td #{new Date(deployment.time).toUTCString()}
+          td #{deployment.user}
+          td !{helpers.buildDiffSegment(data.stack.github_href, deployment.from_revision, deployment.to_revision)}
+          th
+            - if (deployment.finished)
+              - if (deployment.success)
+                span.label.success Success
+              - else
+                span.label.important Failed
+            - else
+              span.label In Progress...

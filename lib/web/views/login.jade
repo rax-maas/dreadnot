@@ -1,0 +1,19 @@
+extends layout
+
+block title
+  h1 Log In
+
+block content
+  form(method='post', action='/login')
+    - if (data.next)
+      input(type='hidden', name='next', value='#{data.next}')
+    div.clearfix
+      label(for='username') Username
+      div.input
+        input(type='text', name='username')
+    div.clearfix
+      label(for='password') Password
+      div.input
+        input(type='password', name='password')
+    div.actions
+      input(type='submit', name='Submit').btn.primary

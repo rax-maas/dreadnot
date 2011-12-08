@@ -1,0 +1,36 @@
+!!!5
+html(lang='en')
+  head
+    title #{title}
+
+    link(rel='stylesheet', href='/static/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='/static/css/dreadnot.css', type='text/css')
+
+    script(src='/static/js/jquery-1.7.0.min.js')
+    script(src='/static/js/dreadnot.js')
+    script(src='/socket.io/socket.io.js')
+    block scripts
+
+  body
+    div.topbar
+      div.fill
+        div.container
+          a(href='/').brand #{title}
+          p.pull-right
+            - if (user !== undefined)
+              | Logged in as #{user},
+              a(href='/logout') log out
+            - else
+              | Not signed in
+    
+    div.container
+      div.content
+        div.page-header
+          block title
+            h1 #{data.name}
+          block upnav
+
+        - if (data.emsg)
+          div.alert-message.error
+            p #{data.emsg}
+        block content

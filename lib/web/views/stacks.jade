@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  - each stack in data.stacks
+    div.stack
+      h2 #{stack.name}
+      p Latest Revision: 
+        a(href='#{helpers.ghCommitUrl(stack.github_href, stack.latest_revision)}')
+          #{helpers.trimRevision(stack.latest_revision)}
+      table
+        tr
+          th Region
+          th Deployed Revision
+          th Status
+        - each region in stack.regions
+          tr
+            td
+              a(href='/stacks/#{stack.name}/regions/#{region.name}') #{region.name}
+            td !{helpers.buildSingleDiffSegment(stack.github_href, region.deployed_revision, stack.latest_revision)}
+            td
+              - if (!region.latest_deployment)
+                span.label No deployments yet
+              - else
+                - if (region.latest_deployment.in_progress)
+                  span.label Deployment \##{region.latest_deployment.name} in progress
+                - else if (region.latest_deployment.success)
+                  span.label.success Deployment \##{region.latest_deployment.name} succeeded
+                - else
+                  span.label.important Deployment \##{region.latest_deployment.name} failed
