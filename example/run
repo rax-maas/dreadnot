@@ -1,0 +1,4 @@
+#!/bin/sh -x
+
+dir=$(dirname $0)
+$dir/../bin/dreadnot -c local_settings.js -s stacks -p 8000
