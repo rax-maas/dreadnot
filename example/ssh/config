@@ -1,0 +1,5 @@
+Host github.com
+	User git
+	Hostname github.com
+	PreferredAuthentications publickey
+	IdentityFile /data/dreadnot/example/ssh/id_rsa
