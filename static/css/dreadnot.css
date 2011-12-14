@@ -18,3 +18,7 @@ body {
 .deployment_log p { background: #000; border: none; padding: .2em; margin: 0; }
 .deployment_log p.error { color: #f00; }
 .deployment_log p.success { color: #0f0; }
+
+.deployment_log div { margin-bottom: .5em; display: none; }
+.deployment_log table { margin: 0; }
+.deployment_log td.key { width: 200px; }
