@@ -18,7 +18,15 @@ function streamLogs(log) {
     }
 
     table = $('<div class="bordered-table condensed-table"><table><tbody>' + Object.keys(entry.obj).map(function(key) {
-      return '<tr><td class="key">' + key + '</td><td>' + entry.obj[key] + '</td></tr>';
+      var val;
+
+      if (key === 'err') {
+        val = entry.obj[key].stack;
+      } else {
+        val = entry.obj[key];
+      }
+
+      return '<tr><td class="key">' + key + '</td><td>' + val + '</td></tr>';
     }).join('') + '</tbody></table></div>');
 
     line.click(function() {
