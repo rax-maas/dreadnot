@@ -20,7 +20,7 @@ exports.task_deploy = function(stack, baton, args, callback) {
   var cmd = ['git', 'pull', 'origin', 'master'],
       opts = {cwd: stack.config.tapkick_dir, env: process.env};
 
-  misc.taskSpawn(baton, args, cmd, opts, function(err, stdout) {
+  misc.taskSpawn(baton, args, cmd, opts, function(err, stdout, stderr) {
     if (!err) {
       baton.log.info('ran git pull');
     }
