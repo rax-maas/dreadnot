@@ -21,7 +21,7 @@ block content
               - if (!region.latest_deployment)
                 span.label No deployments yet
               - else
-                - if (region.latest_deployment.in_progress)
+                - if (!region.latest_deployment.finished)
                   span.label Deployment \##{region.latest_deployment.name} in progress
                 - else if (region.latest_deployment.success)
                   span.label.success Deployment \##{region.latest_deployment.name} succeeded
