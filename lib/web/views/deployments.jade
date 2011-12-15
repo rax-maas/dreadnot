@@ -27,7 +27,7 @@ block content
         tr
           td
             a(href='/stacks/#{data.stack.name}/regions/#{data.name}/deployments/#{deployment.name}') #{deployment.name}
-          td #{new Date(deployment.time).toUTCString()}
+          td #{helpers.prettyTimeSince(deployment.time)}
           td #{deployment.user}
           td !{helpers.buildDiffSegment(data.stack.github_href, deployment.from_revision, deployment.to_revision)}
           th

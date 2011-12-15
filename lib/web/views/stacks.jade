@@ -11,12 +11,18 @@ block content
         tr
           th Region
           th Deployed Revision
+          th Last Deployed
           th Status
         - each region in stack.regions
           tr
             td
               a(href='/stacks/#{stack.name}/regions/#{region.name}') #{region.name}
             td !{helpers.buildSingleDiffSegment(stack.github_href, region.deployed_revision, stack.latest_revision)}
+            td
+              - if (!region.latest_deployment)
+                #{"never"}
+              - else
+                #{helpers.prettyTimeSince(region.latest_deployment.time)}
             td
               - if (!region.latest_deployment)
                 span.label No deployments yet
