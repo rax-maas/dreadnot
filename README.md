@@ -1,6 +1,9 @@
 # Dreadnot - deploy without dread
 
-dreadnot is a 'one click' deploy tool written in nodejs.
+Dreadnot is a 'one click' deploy tool written in [Node.js](http://www.nodejs.org/).
+
+Dreadnot was heavily inspired by [Etsy's Deployinator](https://github.com/etsy/deployinator/).
+
 
 ## Configuration
 
