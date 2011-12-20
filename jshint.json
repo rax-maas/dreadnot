@@ -10,6 +10,7 @@
     "onevar"        : false,
     "trailing"      : true,
     "white"         : false,
-    "sub"           : true
+    "sub"           : true,
+    "evil"          : true
 }
 
