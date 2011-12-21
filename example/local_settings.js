@@ -7,6 +7,7 @@ exports.config = {
   login_required: false,
   stacks: {
     tapkick: {
+      git_url: 'git://github.com/philips/tapkick.git',
       tip: 'master',
       tip_ttl: 120 * 1000,
       regions: ['all']
