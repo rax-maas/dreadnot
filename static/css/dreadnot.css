@@ -14,6 +14,11 @@ body {
   margin: -20px -20px 20px;
 }
 
+a.label:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
 .deployment_log { overflow: auto; height: 620px; background: #000; color: #fff; padding: 10px; }
 .deployment_log p { background: #000; border: none; padding: .2em; margin: 0; }
 .deployment_log p.error { color: #f00; }
