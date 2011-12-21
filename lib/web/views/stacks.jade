@@ -28,8 +28,8 @@ block content
                 span.label No deployments yet
               - else
                 - if (!region.latest_deployment.finished)
-                  span.label Deployment \##{region.latest_deployment.name} in progress
+                  span.label a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}') Deployment \##{region.latest_deployment.name} in progress
                 - else if (region.latest_deployment.success)
-                  span.label.success Deployment \##{region.latest_deployment.name} succeeded
+                  span.label.success a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}') Deployment \##{region.latest_deployment.name} succeeded
                 - else
-                  span.label.important Deployment \##{region.latest_deployment.name} failed
+                  span.label.important a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}') Deployment \##{region.latest_deployment.name} failed
