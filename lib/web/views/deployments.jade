@@ -7,7 +7,7 @@ block upnav
   a(href='/') &larr; back to #{data.env.name}
 
 block content
-  form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}/deploy')
+  form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')
     p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
     p
       input(type='hidden', name='to_revision', value='#{data.stack.latest_revision}')
