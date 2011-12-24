@@ -1,0 +1,11 @@
+extends layout
+
+block title
+  - if (data.title)
+    h1 Error: #{data.title}
+  - else
+    h1 Internal Error
+
+block content
+  div.alert-message.error
+    p #{data.message}
