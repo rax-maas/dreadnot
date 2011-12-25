@@ -12,6 +12,7 @@
     "white"         : false,
     "sub"           : true,
     "evil"          : true,
-    "es5"           : true
+    "es5"           : true,
+    "onecase"       : true
 }
 
