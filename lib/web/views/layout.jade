@@ -18,11 +18,13 @@ html(lang='en')
         div.container
           a(href='/').brand #{title}
           p.pull-right
-            - if (user !== undefined)
-              | Logged in as #{user},
+            - if (!user)
+              | Not signed in
+            - else if (user.authorized)
+              | Logged in as #{user.name},
               a(href='/logout') log out
             - else
-              | Not signed in
+              a(href='/login') Log in
     
     div.container
       div.content
