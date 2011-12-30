@@ -8,11 +8,13 @@ block content
         a(href='#{helpers.ghCommitUrl(stack.github_href, stack.latest_revision)}')
           #{helpers.trimRevision(stack.latest_revision)}
       table
-        tr
-          th Region
-          th Deployed Revision
-          th Last Deployed
-          th Status
+        thead
+          tr
+            th Region
+            th Deployed Revision
+            th Last Deployed
+            th Status
+        tbody
         - each region in stack.regions
           tr
             td

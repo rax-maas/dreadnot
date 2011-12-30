@@ -18,12 +18,14 @@ block content
     p No Deployments
   else
     table
-      tr
-        th \#
-        th Time
-        th User
-        th Revisions
-        th Result
+      thead
+        tr
+          th \#
+          th Time
+          th User
+          th Revisions
+          th Result
+      tbody
       - each deployment in data.deployments
         tr
           td
