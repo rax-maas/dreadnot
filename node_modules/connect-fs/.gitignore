@@ -1,0 +1,14 @@
+# Mac OS X automatic create files
+.DS_Store
+
+# Vim automatic create files
+*~
+.*.sw*
+
+# Static, Temporary, Content files
+sessions
+sessions2
+
+# npm modules
+node_modules
+
