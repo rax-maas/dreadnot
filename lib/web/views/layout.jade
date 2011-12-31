@@ -36,4 +36,10 @@ html(lang='en')
         - if (emsg)
           div.alert-message.error
             p #{emsg}
+
+        block warning
+          - if (user && wmsg)
+            div.alert-message.block-message
+              p #{wmsg}
+
         block content

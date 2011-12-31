@@ -1,0 +1,21 @@
+extends layout
+
+block title
+  h1 Dreadnot Warning
+
+block warning
+
+block content
+  form(method='post', action='/warning').form-stacked
+    fieldset
+      div.clearfix
+        label(for='warning_text') Warning Text
+        div.input
+          textarea(name='warning_text').xxlarge #{wmsg}
+      div.actions
+        button(type='submit', name='action', value='save').btn.primary Save
+        | &nbsp;
+        - if (wmsg)
+          button(type='submit', name='action', value='clear').btn.danger Clear Warning
+        - else
+          button(type='submit', name='action', value='clear').btn.danger.disabled Clear Warning
