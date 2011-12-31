@@ -24,7 +24,7 @@ html(lang='en')
               | Logged in as #{user.name},
               a(href='/logout') log out
             - else
-              a(href='/login') Log in
+              a(href='/login?next=#{url}') Log in
     
     div.container
       div.content
