@@ -33,7 +33,7 @@ html(lang='en')
             h1 #{data.name}
           block upnav
 
-        - if (data.emsg)
+        - if (emsg)
           div.alert-message.error
-            p #{data.emsg}
+            p #{emsg}
         block content
