@@ -18,6 +18,7 @@
     "request": "2.2.5",
     "socket.io": "0.8.7",
     "irc": "0.3.3",
-    "emailjs": "0.1.19"
+    "emailjs": "0.1.19",
+    "markdown": "0.3.1"
   }
 }
