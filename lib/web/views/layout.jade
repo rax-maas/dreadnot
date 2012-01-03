@@ -18,6 +18,12 @@ html(lang='en')
       div.fill
         div.container
           a(href='/').brand #{title}
+          ul
+            block topnav
+              li
+                a(href='/') Deploy
+              li
+                a(href='/warning') Warning Message
           p.pull-right
             - if (!user)
               | Not signed in
