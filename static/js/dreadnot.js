@@ -59,7 +59,8 @@ function streamLogs(log) {
 
 function dreadNow() {
   $('#dread-now').modal({
-    keyboard: true
+    keyboard: true,
+    backdrop: 'static'
   });
 
   $('#deploy-form').submit(function(event) {
