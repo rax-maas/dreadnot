@@ -55,3 +55,29 @@ function streamLogs(log) {
     socket.emit('request log', log);
   });
 }
+
+
+function dreadNow() {
+  $('#dread-now').modal({
+    keyboard: true
+  });
+
+  $('#deploy-form').submit(function(event) {
+    if ($('#wack').val() !== 'true') {
+      event.preventDefault();
+      $('#dread-now').modal('show');
+    } else {
+      return true;
+    }
+  });
+
+  $('#fearless').click(function(event) {
+    $('#dread-now').modal('hide');
+    $('#wack').val('true');
+    $('#deploy-form').submit();
+  });
+
+  $('#fearful').click(function(event) {
+    $('#dread-now').modal('hide');
+  });
+}

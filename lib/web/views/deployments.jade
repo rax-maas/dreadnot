@@ -1,5 +1,10 @@
 extends layout
 
+block scripts
+  - if (user.authorized && wmsg) 
+    script(type='text/javascript')
+      $(function() { dreadNow() });
+
 block title
   h1 #{data.stack.name}:#{data.name}
 
@@ -8,10 +13,22 @@ block upnav
 
 block content
   - if (user.authorized)
-    form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')
+    - if (wmsg)
+      div#dread-now.modal.hide.fade
+        div.modal-header
+          a(href='#').close &times;
+          h3 Dread Now
+        div.modal-body
+          !{helpers.markdown.toHTML(wmsg)}
+        div.modal-footer
+          a(href='#')#fearless.btn.primary Deploy Anyway
+          a(href='#')#fearful.btn.secondary Cancel
+
+    form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')#deploy-form
       p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
       p
         input(type='hidden', name='to_revision', value='#{data.stack.latest_revision}')
+        input(type='hidden', name='ack_warning', value='#{wmsg ? "false" : "true"}')#wack
         input(type='submit', value='Deploy').btn.success
 
   if data.deployments.length === 0
