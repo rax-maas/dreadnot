@@ -40,6 +40,6 @@ html(lang='en')
         block warning
           - if (user && wmsg)
             div.alert-message.block-message
-              p #{wmsg}
+              !{helpers.markdown.toHTML(wmsg)}
 
         block content
