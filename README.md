@@ -21,12 +21,15 @@ exports.config = {
   // The data root Dreadnot will use
   data_root: '/var/dreadnot',
 
+  // Base URL to access dreadnot (used in IRC, email)
+  default_url: 'http://example.com',
+
   // Dreadnot uses an htpasswd file (with support for md5 and sha1) for auth
   htpasswd_file: '/etc/dreadnot/htpasswd',
 
   // Each stack represents a code base that should be deployed to one or more regions
   stacks: {
-    
+
     // For a stack named 'webapp', there should be a 'webapp.js' file in the
     // stacks directory
     webapp: {
