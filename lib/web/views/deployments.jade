@@ -25,9 +25,10 @@ block content
           a(href='#')#fearful.btn.secondary Cancel
 
     form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')#deploy-form
+      p
+        input(type='text', name='to_revision', size='40', value='#{data.stack.latest_revision}')#to_revision
       p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
       p
-        input(type='hidden', name='to_revision', value='#{data.stack.latest_revision}')
         input(type='hidden', name='ack_warning', value='#{wmsg ? "false" : "true"}')#wack
         input(type='submit', value='Deploy').btn.success
 
