@@ -26,7 +26,7 @@ block content
 
     form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')#deploy-form
       p
-        input(type='text', name='to_revision', size='40', value='#{data.stack.latest_revision}')#to_revision
+        input(type='text', name='to_revision', size='40', value='#{data.stack.latest_revision}')#to_revision.full_hash
       p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
       p
         input(type='hidden', name='ack_warning', value='#{wmsg ? "false" : "true"}')#wack

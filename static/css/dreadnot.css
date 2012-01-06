@@ -27,3 +27,7 @@ a.label:hover {
 .deployment_log div { margin-bottom: .5em; display: none; }
 .deployment_log table { margin: 0; }
 .deployment_log td.key { width: 200px; }
+
+.full_hash {
+  width: 300px;
+}
