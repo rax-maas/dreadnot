@@ -11,7 +11,8 @@ var git = require('util/git');
 
 exports.get_deployedRevision = function(args, callback) {
   git.revParse(this.config.tapkick_dir, 'HEAD', function(err, stdout) {
-    callback(null, stdout);
+    // trim leading and trailing whitespace
+    callback(null, stdout.replace(/^\s+|\s+$/g, ''));
   });
 };
 
