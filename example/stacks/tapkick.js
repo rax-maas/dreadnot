@@ -17,15 +17,17 @@ exports.get_deployedRevision = function(args, callback) {
 
 
 exports.task_deploy = function(stack, baton, args, callback) {
-  var cmd = ['git', 'pull', 'origin', 'master'],
-      opts = {cwd: stack.config.tapkick_dir, env: process.env};
+  var opts = {cwd: stack.config.tapkick_dir, env: process.env};
 
-  misc.taskSpawn(baton, args, cmd, opts, function(err, stdout, stderr) {
-    if (!err) {
-      baton.log.info('ran git pull');
+  async.series([
+    function fetch(callback) {
+      misc.taskSpawn(baton, args, ['git', 'fetch'], opts, callback);
+    },
+
+    function checkout(callback) {
+      misc.taskSpawn(baton, args, ['git', 'checkout', args.revision], opts, callback);
     }
-    callback(err);
-  });
+  ], callback);
 };
 
 exports.targets = {
