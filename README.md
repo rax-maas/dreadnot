@@ -106,6 +106,11 @@ file that exports
 
 ## Running Dreadnot
 
+```
+	npm install dreadnot -g
+
+```
+
 Dreadnot takes a number of options on the command line. The defaults are:
 
 ```

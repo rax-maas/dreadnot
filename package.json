@@ -1,5 +1,6 @@
 {
   "name": "dreadnot",
+  "bin":"./bin/dreadnot",
   "contributors": [
     "Russell Haering <russellhaering@gmail.com>",
     "Ryan Phillips <ryan.phillips@rackspace.com>",
