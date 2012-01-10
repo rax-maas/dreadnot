@@ -6,7 +6,7 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "async": "0.1.12",
     "connect": "1.7.x",
@@ -21,5 +21,8 @@
     "irc": "0.3.3",
     "emailjs": "0.1.19",
     "markdown": "0.3.1"
+  },
+  "engines": {
+    "node": ">=0.4.1"
   }
 }
