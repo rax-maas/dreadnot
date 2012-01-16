@@ -10,7 +10,7 @@
   "dependencies": {
     "async": "0.1.12",
     "connect": "1.7.x",
-    "express": "2.4.7",
+    "express": "2.5.6",
     "logmagic": "0.1.4",
     "sprintf": "0.1.1",
     "jade": "0.16.3",
@@ -23,6 +23,6 @@
     "markdown": "0.3.1"
   },
   "engines": {
-    "node": ">=0.4.1"
+    "node": ">=0.4.1 <0.7.0"
   }
 }
