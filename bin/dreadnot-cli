@@ -16,14 +16,36 @@
  *
  */
 
+var logmagic = require('logmagic');
 var log = require('logmagic').local('cli');
-var optmist = require("optimist");
+var optimist = require("optimist");
 var fs = require("fs");
 var url = require("url");
 var querystring = require('querystring');
 var http = require('http');
-var Stream = require('every-stream');
+var https = require('https');
+var terminal = require('terminal');
+var util = require('util');
 var argv;
+
+exports.buildSink = function f(includeDate, includeColors) {
+  includeDate = includeDate || false;
+
+  if (includeColors === undefined) {
+    includeColors = true;
+  }
+
+  return function(modulename, level, message, obj) {
+    if (includeColors) {
+      console.log(terminal.stylize('' + message));
+    }
+
+  }
+};
+
+logmagic.registerSink("service", exports.buildSink(true));
+
+logmagic.route('cli', logmagic.INFO, 'service');
 
 /* CLI Options */
 var argv = require('optimist')
@@ -48,11 +70,10 @@ var argv = require('optimist')
     'alias': 'warning',
     'desc': 'Allows you to set the warning message.'
   })
-  .demand("c")
   .argv;
 
 function reqOptions(host, port, path, method, data, auth) {
-  var options = (method === "POST") ? {
+  var options = (method === 'POST') ? {
     host: host,
     port: port,
     path: path,
@@ -75,17 +96,17 @@ function reqOptions(host, port, path, method, data, auth) {
 }
 
 /* deployment spinner, where we ingest the stream and return the data to user */
-if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
-  var config = (argv.c != true ) ? JSON.parse(fs.readFileSync(__dirname + '/' + argv.c)) : JSON.parse(fs.readFileSync(process.env.HOME + '/.settings.json'))
-    , host = url.parse(config.dreadnot_url)
-    , auth = 'Basic ' + new Buffer(config.username + ':' + config.password).toString('base64')
-    , stack = argv.s
-    , region = argv.r
-    , list = argv.l
-    , warning = argv.w
-    , body = ''
-    , protocol (host.protocol === "https") ? 'https' : 'http';
-
+if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
+  var config = (argv.c != true ) ? JSON.parse(fs.readFileSync(process.env.PWD + '/' + argv.c)) : JSON.parse(fs.readFileSync(process.env.HOME + '/.settings.json'));
+  var host = url.parse(config.dreadnot_url)
+  , auth = 'Basic ' + new Buffer(config.username + ':' + config.password).toString('base64')
+  , stack = argv.s
+  , region = argv.r
+  , list = argv.l
+  , warning = argv.w
+  , body = ''
+  , protocol = (host.protocol === "https") ? 'https' : 'http';
+  
   if (config) {
     if (warning) {
       /* Warning Post data */
@@ -105,19 +126,22 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
         res.on('data', function(warn) {
           var message = JSON.parse(warn);
           if (message.message != '') {
-            console.log('Message set succesfully to: ' + message.message);
+            log.infof('Message set succesfully to: ${message}', {message: message.message});
           } else {
-            console.log('Warning message cleared.')
+            log.infof('[red]Warning message cleared.[/red]');
           }
         });
       });
       req.write(warnData);
       req.end();
       
+      req.on('error', function(e) {
+        log.debugf('[red]Error:[/red] ${e}', {e: e});
+      });
       
     } else if (warning === ''){
       /* warning cannot be empty */
-      console.log('Warning cannot be blank.');
+      log.infof('Warning cannot be set blank.');
     }
     
     if (list) {
@@ -127,38 +151,26 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
             var listApi = JSON.parse(chunk);
             for(var i=0; i<listApi.stacks.length; i++) {
               var stack = listApi.stacks[i];
-              console.log('stack:  ' + stack.name);
+              log.debugf('stack: ${stack}', {stack: stack.name});
                 for(var r=0; r<stack.regions.length; r++) {
                   var deployedVersion = stack.regions[r].deployed_revision;
                   var newVersion = (stack.regions[r].latest_deployment === null) ? "NULL" : stack.regions[r].latest_deployment.to_revision;
                   var regionName = stack.regions[r].name;
-                  console.log('\t[ ' + regionName + ' ] Current: ' + newVersion + ' Old:' + deployedVersion)
+                  log.infof('\t[ [red]${regionName}[/red] ] Current: ${newVersion} Old: ${deployedVersion}',{
+                    regionName: regionName,
+                    newVersion: newVersion,
+                    deployedVersion: deployedVersion
+                  });
                 }
             }
         });
       });
-
       req.end();
+      
       req.on('error', function(e) {
-        console.log("Error" + e);
+        log.debugf('[red]Error:[/red] ${e}', {e: e});
       });
     } else if (argv.s && argv.r) {
- 
-      var req = http.request(reqOptions(host.hostname, host.port, config.api_path + 'warning', 'GET', null, auth), function(res) {
-        res.on('data', function(warn) {
-          var message = JSON.parse(warn);
-          console.log(message);
-          if (message.message != '') {
-            console.log("Not deploying warning set.")
-            console.log('\nWarning Message: ' + message.message);
-          }
-        });
-      
-        req.on('error', function(e) {
-          console.log('Error:' + e);
-        });
-        req.end();
-      });
 
       var req = http.request(
         reqOptions(host.hostname, host.port, config.api_path + 'stacks/' + stack + '/regions/' + region, 'GET', null, auth),
@@ -173,8 +185,8 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
               res.on('data', function(warn) {
                 var message = JSON.parse(warn);
                 if (message.message != '') {
-                  console.log("Not deploying warning set.");
-                  console.log('Warning Message: ' + message.message);
+                  log.infof('Not deploying warning set.');
+                  log.infof('\nWarning Message: ${message}', {message: message.message});
                   process.exit(0);
                 }
               });
@@ -203,17 +215,17 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
                     res.on('data', function (chunk) {
                       /* tail our log stream. */
                       var logStream = JSON.parse(chunk);
+                      log.infof('[green]${logs}[/green]', { logs: logStream.msg });
                       if (logStream.msg.match(/FAILED in/)) {
-                        console.log(logStream.msg);
                         process.exit(0);
                       } else if (logStream.msg.match(/SUCCESS in/)) {
-                        console.log(logStream.msg);
+                        log.infof('${logStream}', {logStream: logStream.msg});
                       }
                     });
                   });
                   
                   req.on('error', function(e) {
-                    console.log('Error:' + e);
+                    log.debugf('[red]Error:[/red] ${e}', {e: e});
                   });
                   req.end();
 
@@ -221,7 +233,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
             });
 
             postReq.on('error', function(e) {
-              console.log('Error:' + e);
+              log.debugf('[red]Error:[/red] ${e}', {e: e});
             });
 
             postReq.write(postData);
@@ -231,10 +243,12 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w){
       });
 
       req.on('error', function(e) {
-        console.log('Error:' + e);
+        log.debugf('[red]Error:[/red] ${e}', {e: e});
       });
       req.end();
     }
   }
 
+} else {
+  optimist.showHelp();
 }
