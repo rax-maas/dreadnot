@@ -96,16 +96,29 @@ function reqOptions(host, port, path, method, data, auth) {
 }
 
 /* deployment spinner, where we ingest the stream and return the data to user */
-if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
-  var config = (argv.c != true ) ? JSON.parse(fs.readFileSync(process.env.PWD + '/' + argv.c)) : JSON.parse(fs.readFileSync(process.env.HOME + '/.settings.json'));
-  var host = url.parse(config.dreadnot_url)
-  , auth = 'Basic ' + new Buffer(config.username + ':' + config.password).toString('base64')
-  , stack = argv.s
-  , region = argv.r
-  , list = argv.l
-  , warning = argv.w
-  , body = ''
-  , protocol = (host.protocol === "https") ? 'https' : 'http';
+if (process.argv.length > 2) {
+  /* clean up config and argv detection */
+  if (!argv.c) {
+    try {
+      var config = JSON.parse(fs.readFileSync(process.env.HOME + '/.settings.json'));
+    } catch (err) {
+      log.infof('[red]${e}[/red]', {e: err});
+    }
+  } else {
+    try {
+      var config = JSON.parse(fs.readFileSync(process.env.PWD + '/' + argv.c));
+    } catch (err){
+      log.infof('[red]${e}[/red]', {e: err});
+    }
+  }
+  
+  var host = (config) ? url.parse(config.dreadnot_url) : url.parse('http://localhost'),
+      auth = (config) ? 'Basic ' + new Buffer(config.username + ':' + config.password).toString('base64') : 'nouserpass',
+      stack = argv.s,
+      region = argv.r,
+      list = argv.l,
+      warning = argv.w,
+      protocol = (host.protocol === "https") ? 'https' : 'http';
 
   if (config) {
     if (warning) {
@@ -136,7 +149,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
       req.end();
 
       req.on('error', function(e) {
-        log.infof('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]${e}[/red]', {e: e});
       });
 
     } else if (warning === ''){
@@ -166,7 +179,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
         });
       });
       req.on('error', function(e) {
-        log.infof('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]${e}[/red]', {e: e});
       });
       req.end();
 
@@ -224,7 +237,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
                   });
 
                   req.on('error', function(e) {
-                    log.infof('[red]Error:[/red] ${e}', {e: e});
+                    log.infof('[red]${e}[/red]', {e: e});
                   });
                   req.end();
 
@@ -232,7 +245,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
             });
 
             postReq.on('error', function(e) {
-              log.infof('[red]Error:[/red] ${e}', {e: e});
+              log.infof('[red]${e}[/red]', {e: e});
             });
 
             postReq.write(postData);
@@ -242,7 +255,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
       });
 
       req.on('error', function(e) {
-        log.infof('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]${e}[/red]', {e: e});
       });
       req.end();
     }
