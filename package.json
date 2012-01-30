@@ -20,7 +20,8 @@
     "socket.io": "0.8.7",
     "irc": "0.3.3",
     "emailjs": "0.1.19",
-    "markdown": "0.3.1"
+    "markdown": "0.3.1",
+    "node-hipcat": "0.1.0"
   },
   "engines": {
     "node": ">=0.4.1 <0.7.0"
