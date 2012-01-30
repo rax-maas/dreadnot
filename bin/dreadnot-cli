@@ -91,7 +91,7 @@ function reqOptions(host, port, path, method, data, auth) {
         'Authorization': auth,
       }
   };
-  
+
   return options;
 }
 
@@ -106,7 +106,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
   , warning = argv.w
   , body = ''
   , protocol = (host.protocol === "https") ? 'https' : 'http';
-  
+
   if (config) {
     if (warning) {
       /* Warning Post data */
@@ -115,12 +115,12 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
       } else {
         warning = warning;
       }
-      
+
       var warnData = querystring.stringify({
         'action' : 'save',
         'warning_text' : warning
       });
-      
+
       /* Set the warning message if you want to. */
       var req = http.request(reqOptions(host.hostname, host.port, config.api_path + 'warning', 'POST', warnData, auth), function(res) {
         res.on('data', function(warn) {
@@ -134,16 +134,16 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
       });
       req.write(warnData);
       req.end();
-      
+
       req.on('error', function(e) {
-        log.debugf('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]Error:[/red] ${e}', {e: e});
       });
-      
+
     } else if (warning === ''){
       /* warning cannot be empty */
       log.infof('Warning cannot be set blank.');
     }
-    
+
     if (list) {
       var req = http.request(reqOptions(host.hostname, host.port, config.api_path, 'GET', null, auth), 
       function(res) {
@@ -151,7 +151,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
             var listApi = JSON.parse(chunk);
             for(var i=0; i<listApi.stacks.length; i++) {
               var stack = listApi.stacks[i];
-              log.debugf('stack: ${stack}', {stack: stack.name});
+              log.infof('stack: ${stack}', {stack: stack.name});
                 for(var r=0; r<stack.regions.length; r++) {
                   var deployedVersion = stack.regions[r].deployed_revision;
                   var newVersion = (stack.regions[r].latest_deployment === null) ? "NULL" : stack.regions[r].latest_deployment.to_revision;
@@ -165,11 +165,11 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
             }
         });
       });
-      req.end();
-      
       req.on('error', function(e) {
-        log.debugf('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]Error:[/red] ${e}', {e: e});
       });
+      req.end();
+
     } else if (argv.s && argv.r) {
 
       var req = http.request(
@@ -208,7 +208,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
               res.on('data', function (end){
                 var parsedStream = JSON.parse(end);
                 deploymentNum = parsedStream.name;
-                
+
                 var req = http.request(
                   reqOptions(host.hostname, host.port, config.api_path + 'stacks/' + stack + '/regions/' + region + '/deployments/' + deploymentNum + '/log', 'GET', postData, auth), 
                   function (res) {
@@ -216,16 +216,15 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
                       /* tail our log stream. */
                       var logStream = JSON.parse(chunk);
                       log.infof('[green]${logs}[/green]', { logs: logStream.msg });
-                      if (logStream.msg.match(/FAILED in/)) {
-                        process.exit(0);
-                      } else if (logStream.msg.match(/SUCCESS in/)) {
-                        log.infof('${logStream}', {logStream: logStream.msg});
-                      }
+                    });
+
+                    res.on('end', function (endState) {
+                      log.infof('[green]Finished run.[/green]');
                     });
                   });
-                  
+
                   req.on('error', function(e) {
-                    log.debugf('[red]Error:[/red] ${e}', {e: e});
+                    log.infof('[red]Error:[/red] ${e}', {e: e});
                   });
                   req.end();
 
@@ -233,7 +232,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
             });
 
             postReq.on('error', function(e) {
-              log.debugf('[red]Error:[/red] ${e}', {e: e});
+              log.infof('[red]Error:[/red] ${e}', {e: e});
             });
 
             postReq.write(postData);
@@ -243,7 +242,7 @@ if ((argv.s && argv.r) || (argv.l && (argv.s || argv.r)) || argv.l || argv.w) {
       });
 
       req.on('error', function(e) {
-        log.debugf('[red]Error:[/red] ${e}', {e: e});
+        log.infof('[red]Error:[/red] ${e}', {e: e});
       });
       req.end();
     }
