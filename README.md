@@ -4,6 +4,7 @@ Dreadnot is a 'one click' deploy tool written in [Node.js](http://www.nodejs.org
 
 Dreadnot was heavily inspired by [Etsy's Deployinator](https://github.com/etsy/deployinator/).
 
+![Deploy all the branches](http://desmond.imageshack.us/Himg442/scaled.php?server=442&filename=deployallthebranches.png&res=medium)
 
 ## Configuration
 
