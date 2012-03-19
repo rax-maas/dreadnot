@@ -47,6 +47,7 @@ function streamLogs(log) {
         if (typeof entry !== 'boolean') {
           pushEntry(entry);
         } else {
+          done = true;
           $('pre.deployment_log p').last().addClass(entry ? 'success' : 'error');
         }
       });
