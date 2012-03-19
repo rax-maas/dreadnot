@@ -6,10 +6,10 @@ block scripts
       $(function() { dreadNow() });
 
 block title
-  h1 #{data.stack.name}:#{data.name}
+  h1 #{data.stack.name}:#{data.region.name}
 
 block upnav
-  a(href='/') &larr; back to #{data.env.name}
+  a(href='/') &larr; back to #{env}
 
 block content
   - if (user.authorized)
@@ -24,10 +24,10 @@ block content
           a(href='#')#fearless.btn.primary Deploy Anyway
           a(href='#')#fearful.btn.secondary Cancel
 
-    form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.name}')#deploy-form
+    form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.region.name}')#deploy-form
       p
         input(type='text', name='to_revision', size='40', value='#{data.stack.latest_revision}')#to_revision.full_hash
-      p !{helpers.buildDiffSegment(data.stack.github_href, data.deployed_revision, data.stack.latest_revision)}
+      p !{helpers.buildDiffSegment(data.stack.github_href, data.region.deployed_revision, data.stack.latest_revision)}
       p
         input(type='hidden', name='ack_warning', value='#{wmsg ? "false" : "true"}')#wack
         input(type='submit', value='Deploy').btn.success
@@ -47,7 +47,7 @@ block content
       - each deployment in data.deployments
         tr
           td
-            a(href='/stacks/#{data.stack.name}/regions/#{data.name}/deployments/#{deployment.name}') #{deployment.name}
+            a(href='/stacks/#{data.stack.name}/regions/#{data.region.name}/deployments/#{deployment.name}') #{deployment.name}
           td #{helpers.prettyTimeSince(deployment.time)}
           td #{deployment.user}
           td !{helpers.buildDiffSegment(data.stack.github_href, deployment.from_revision, deployment.to_revision)}

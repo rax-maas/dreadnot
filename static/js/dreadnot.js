@@ -2,13 +2,11 @@
 
 
 function streamLogs(log) {
-  var socket = io.connect(),
-      logPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'log'].join('.'),
-      endPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'end'].join('.');
+  var logPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'log'].join('/');
+      dest = $('pre.deployment_log');
 
-  socket.on(logPath, function(entry) {
-    var dest = $('pre.deployment_log'),
-        scroll = Math.abs(dest[0].scrollTop - (dest[0].scrollHeight - dest[0].offsetHeight)) < 10,
+  function pushEntry(entry) {
+    var scroll = Math.abs(dest[0].scrollTop - (dest[0].scrollHeight - dest[0].offsetHeight)) < 10,
         line, table;
 
     if (entry.lvl <= 3) {
@@ -39,21 +37,27 @@ function streamLogs(log) {
     if (scroll) {
       dest[0].scrollTop = dest[0].scrollHeight;
     }
-  });
+  }
 
-  socket.on(endPath, function(success) {
-    var last = $('pre.deployment_log p').last();
+  function loadFrom(idx) {
+    $.get('/' + logPath + '?from=' + idx, function(data) {
+      var done = false, success;
 
-    if (success) {
-      last.addClass('success');
-    } else {
-      last.addClass('error');
-    }
-  });
+      data.forEach(function(entry) {
+        if (typeof entry !== 'boolean') {
+          pushEntry(entry);
+        } else {
+          $('pre.deployment_log p').last().addClass(entry ? 'success' : 'error');
+        }
+      });
 
-  socket.once('connect', function() {
-    socket.emit('request log', log);
-  });
+      if (!done) {
+        loadFrom(idx + data.length);
+      }
+    });
+  }
+
+  loadFrom(0);
 }
 
 

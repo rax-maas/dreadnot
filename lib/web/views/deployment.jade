@@ -1,19 +1,19 @@
 extends layout-deploy
 
 block title
-  h1 Deployment \##{data.name} of #{data.stack.name}:#{data.region.name}
+  h1 Deployment \##{data.deployment.name} of #{data.stack.name}:#{data.region.name}
 
 block upnav
   a(href='/stacks/#{data.stack.name}/regions/#{data.region.name}') &larr; back to #{data.region.name}
 
 block scripts
-  - var log = {stack: data.stack.name, region: data.region.name, deployment: data.name};
+  - var log = {stack: data.stack.name, region: data.region.name, deployment: data.deployment.name};
 
   script(type='text/javascript')
     $(function() { streamLogs(!{JSON.stringify(log)}); });
 
 block content
-  p #{new Date(data.time).toUTCString()} by #{data.user}
-  p !{helpers.buildDiffSegment(data.stack.github_href, data.from_revision, data.to_revision)}
+  p #{new Date(data.deployment.time).toUTCString()} by #{data.deployment.user}
+  p !{helpers.buildDiffSegment(data.stack.github_href, data.deployment.from_revision, data.deployment.to_revision)}
 
   pre.deployment_log
