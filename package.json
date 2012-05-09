@@ -16,7 +16,7 @@
     "jade": "0.20.0",
     "optimist": "0.2.0",
     "mkdirp": "0.2.1",
-    "request": "2.2.5",
+    "request": "2.9.2",
     "socket.io": "0.8.7",
     "irc": "0.3.3",
     "emailjs": "0.1.19",
