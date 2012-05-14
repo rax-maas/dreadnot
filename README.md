@@ -22,7 +22,7 @@ exports.config = {
   // The data root Dreadnot will use
   data_root: '/var/dreadnot',
 
-  // Base URL to access dreadnot (used in IRC, email)
+  // Base URL to access dreadnot (used in IRC, email, Hipchat)
   default_url: 'http://example.com',
 
   // Dreadnot uses an htpasswd file (with support for md5 and sha1) for auth
@@ -73,6 +73,16 @@ exports.config = {
       },
       to: 'systems@example.com',
       from: 'staging-dreadnot@example.com'
+    },
+
+    // A Hipchat notification plugin
+    hipchat: {
+      name: 'Dreadnot',
+      apiKey: '123456789abcdefg',
+      rooms: [
+        1234,
+        5678
+      ]
     }
   }
 };

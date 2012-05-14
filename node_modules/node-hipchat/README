@@ -1,0 +1,2 @@
+A simple node.js library for communicating with the HipChat REST API.
+Should be reasonably working, but still under construction.
