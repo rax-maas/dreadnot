@@ -14,6 +14,7 @@
     "logmagic": "0.1.4",
     "sprintf": "0.1.1",
     "jade": "0.20.0",
+    "jshint": "0.7.1",
     "optimist": "0.2.0",
     "mkdirp": "0.2.1",
     "request": "2.9.2",
