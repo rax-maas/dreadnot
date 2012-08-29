@@ -104,6 +104,32 @@ file that exports
   4.  A "callback" function that should be called without arguments on
       completion, or with a single error object if an error occurs.
 
+### Tasks
+
+In the configuration used by Rackspace Cloud Monitoring, a deployment looks something like:
+
+1. Build: verify that the requested revision has been successfully built and
+   that all tests pass.
+2. Prepare: remove the region being deployed from the load balancer rotation,
+   redirecting all traffic to another region.
+3. Execute: use a chef search to locate all servers in the region, then ssh to
+   each in parallel to upgrade the code.
+4. Validate: execute checks against each upgraded service to verify that it is
+   functioning properly.
+5. Restore: restore the region to the load balancer rotation.
+
+Imporantly, Dreadnot knows nothing about the hosts to which it is deploying -
+if it did, we would have to modify our Dreadnot configuration every time we
+added or removed a machine from our environment. Instead, we rely on chef
+(although anything that knows about your servers will work) to give us an
+up-to-date list of all hosts in a given region. In smaller deployments it might
+be suitable to hardcode a list of hosts.
+
+## FAQ
+
+**Does Dreanot support SVN?**
+
+Dreanot supports Node.js - you can use any technology or topology that suits you, as long as you can find a library for it.
 
 ## Running Dreadnot
 
