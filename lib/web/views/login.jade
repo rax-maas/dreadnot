@@ -4,7 +4,7 @@ block title
   h1 Log In
 
 block content
-  form(method='post', action='/login')
+  form(method='post', action='#{data.urlPrepend}/login')
     - if (data.next)
       input(type='hidden', name='next', value='#{data.next}')
     div.clearfix

@@ -2,9 +2,9 @@ extends layout
 
 block topnav
   li
-    a(href='/') Deploy
+    a(href='#{data.urlPrepend}/') Deploy
   li.active
-    a(href='/warning') Warning Message
+    a(href='#{data.urlPrepend}/warning') Warning Message
 
 block title
   h1 Dreadnot Warning
@@ -12,7 +12,7 @@ block title
 block warning
 
 block content
-  form(method='post', action='/warning').form-stacked
+  form(method='post', action='#{data.urlPrepend}/warning').form-stacked
     fieldset
       div.clearfix
         label(for='warning_text') Warning Text

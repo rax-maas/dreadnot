@@ -2,6 +2,6 @@ extends layout
 
 block topnav
   li.active
-    a(href='/') Deploy
+    a(href='#{data.urlPrepend}/') Deploy
   li
-    a(href='/warning') Warning Message
+    a(href='#{data.urlPrepend}/warning') Warning Message

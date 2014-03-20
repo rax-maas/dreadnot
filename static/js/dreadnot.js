@@ -2,8 +2,17 @@
 
 
 function streamLogs(log) {
+  console.log(window.location);
+  console.log(window.location.pathname);
   var logPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'log'].join('/');
-      dest = $('pre.deployment_log');
+      dest = $('pre.deployment_log'),
+      prependRe = new RegExp('/(.*?)/stacks/.*'),
+      urlPrepend = '';
+  
+  if (prependRe.test(window.location.pathname)) {
+    urlPrepend = prependRe.exec(window.location.pathname)[1];
+    logPath = urlPrepend + '/' + logPath;
+  }
 
   function pushEntry(entry) {
     var scroll = Math.abs(dest[0].scrollTop - (dest[0].scrollHeight - dest[0].offsetHeight)) < 10,

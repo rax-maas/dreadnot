@@ -3,34 +3,34 @@ html(lang='en')
   head
     title #{title}
 
-    link(rel='stylesheet', href='/static/css/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='/static/css/dreadnot.css', type='text/css')
-    link(rel='icon', type="image/png", href='/static/dreadnot.png')
+    link(rel='stylesheet', href='#{data.urlPrepend}/static/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='#{data.urlPrepend}/static/css/dreadnot.css', type='text/css')
+    link(rel='icon', type="image/png", href='#{data.urlPrepend}/static/dreadnot.png')
 
-    script(src='/static/js/jquery-1.7.0.min.js')
-    script(src='/static/js/bootstrap-modal.js')
-    script(src='/static/js/dreadnot.js')
+    script(src='#{data.urlPrepend}/static/js/jquery-1.7.0.min.js')
+    script(src='#{data.urlPrepend}/static/js/bootstrap-modal.js')
+    script(src='#{data.urlPrepend}/static/js/dreadnot.js')
     block scripts
 
   body
     div.topbar
       div.fill
         div.container
-          a(href='/').brand #{title}
+          a(href='#{data.urlPrepend}/').brand #{title}
           ul
             block topnav
               li
-                a(href='/') Deploy
+                a(href='#{data.urlPrepend}/') Deploy
               li
-                a(href='/warning') Warning Message
+                a(href='#{data.urlPrepend}/warning') Warning Message
           p.pull-right
             - if (!user)
               | Not signed in
             - else if (user.authorized)
               | Logged in as #{user.name},
-              a(href='/logout') log out
+              a(href='#{data.urlPrepend}/logout') log out
             - else
-              a(href='/login?next=#{url}') Log in
+              a(href='#{data.urlPrepend}/login?next=#{url}') Log in
     
     div.container
       div.content
