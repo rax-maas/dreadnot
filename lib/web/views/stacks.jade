@@ -18,7 +18,7 @@ block content
         - each region in stack.regions
           tr
             td
-              a(href='/stacks/#{stack.name}/regions/#{region.name}') #{region.name}
+              a(href='#{data.urlPrepend}/stacks/#{stack.name}/regions/#{region.name}') #{region.name}
             td !{helpers.buildSingleDiffSegment(stack.github_href, region.deployed_revision, stack.latest_revision)}
             td
               - if (!region.latest_deployment)
@@ -30,11 +30,11 @@ block content
                 span.label No deployments yet
               - else
                 - if (!region.latest_deployment.finished)
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label
+                  a(href='#{data.urlPrepend}/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label
                     | Deployment \##{region.latest_deployment.name} in progress
                 - else if (region.latest_deployment.success)
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.success
+                  a(href='#{data.urlPrepend}/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.success
                     | Deployment \##{region.latest_deployment.name} succeeded
                 - else
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.important
+                  a(href='#{data.urlPrepend}/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.important
                     | Deployment \##{region.latest_deployment.name} failed

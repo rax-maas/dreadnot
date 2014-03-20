@@ -4,7 +4,7 @@ block title
   h1 Deployment \##{data.deployment.name} of #{data.stack.name}:#{data.region.name}
 
 block upnav
-  a(href='/stacks/#{data.stack.name}/regions/#{data.region.name}') &larr; back to #{data.region.name}
+  a(href='#{data.urlPrepend}/stacks/#{data.stack.name}/regions/#{data.region.name}') &larr; back to #{data.region.name}
 
 block scripts
   - var log = {stack: data.stack.name, region: data.region.name, deployment: data.deployment.name};
