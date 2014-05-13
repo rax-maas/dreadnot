@@ -23,6 +23,7 @@
     "emailjs": "0.1.19",
     "markdown": "0.3.1",
     "node-hipchat": "0.1.0",
+    "slack-notify": "0.1.1",
     "graphite": "0.0.6"
   },
   "engines": {
