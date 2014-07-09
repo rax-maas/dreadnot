@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+/**
+ * Entry point to Mock Auth API  HTTP server.
+ */
+
+var server = require('../tests/mock-auth-server');
+
+function main() {
+  server.run();
+}
+
+main();

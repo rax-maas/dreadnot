@@ -1,0 +1,18 @@
+{
+    "maxerr"        : 100,
+    "node"          : true,
+    "curly"         : true,
+    "eqeqeq"        : true,
+    "latedef"       : false,
+    "undef"         : true,
+    "newcap"        : true,
+    "nonew"         : true,
+    "onevar"        : false,
+    "trailing"      : true,
+    "white"         : false,
+    "sub"           : true,
+    "evil"          : true,
+    "es5"           : true,
+    "onecase"       : true,
+    "strict"        : false
+}
