@@ -6,24 +6,25 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
-  "version": "0.1.4",
+  "version": "0.1.5",
   "dependencies": {
     "async": "0.1.12",
     "connect": "1.7.x",
+    "emailjs": "0.1.19",
     "express": "2.5.6",
-    "logmagic": "0.1.4",
-    "sprintf": "0.1.1",
+    "graphite": "0.0.6",
+    "irc": "0.3.3",
     "jade": "0.20.0",
     "jshint": "0.7.1",
-    "optimist": "0.2.0",
+    "ldapauth": "^2.2.4",
+    "logmagic": "0.1.4",
+    "markdown": "0.3.1",
     "mkdirp": "0.2.1",
+    "node-hipchat": "0.1.0",
+    "optimist": "0.2.0",
     "request": "2.9.2",
     "socket.io": "0.8.7",
-    "irc": "0.3.3",
-    "emailjs": "0.1.19",
-    "markdown": "0.3.1",
-    "node-hipchat": "0.1.0",
-    "graphite": "0.0.6"
+    "sprintf": "0.1.1"
   },
   "engines": {
     "node": ">=0.4.1 <0.7.0"
