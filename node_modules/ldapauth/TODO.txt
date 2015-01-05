@@ -1,0 +1,2 @@
+- change to bunyan logging
+- lib/cache.js -> https://github.com/trentm/node-expiring-lru-cache

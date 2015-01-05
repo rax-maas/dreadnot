@@ -1,0 +1,36 @@
+{
+  "name": "sprintf",
+  "maintainers": [
+    {
+      "name": "maritz",
+      "email": "moritz@mpeters.biz"
+    }
+  ],
+  "version": "0.1.1",
+  "engines": {
+    "node": ">=0.2.4"
+  },
+  "author": {
+    "name": "Moritz Peters"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "_npmUser": {
+    "name": "maritz",
+    "email": "moritz@mpeters.biz"
+  },
+  "description": "Sprintf() for node.js",
+  "main": "./lib/sprintf",
+  "_id": "sprintf@0.1.1",
+  "_nodeSupported": true,
+  "_npmVersion": "0.2.8-1",
+  "_nodeVersion": "v0.3.0",
+  "dist": {
+    "tarball": "http://registry.npmjs.org/sprintf/-/sprintf-0.1.1.tgz",
+    "shasum": "e8925fc9894e1aa6899e9091c7f2a12130b70de5"
+  },
+  "_shasum": "e8925fc9894e1aa6899e9091c7f2a12130b70de5",
+  "_from": "sprintf@0.1.1",
+  "_resolved": "https://registry.npmjs.org/sprintf/-/sprintf-0.1.1.tgz"
+}
