@@ -149,9 +149,9 @@ be suitable to hardcode a list of hosts.
 
 ## FAQ
 
-**Does Dreanot support SVN?**
+**Does Dreadnot support SVN?**
 
-Dreanot supports Node.js - you can use any technology or topology that suits you, as long as you can find a library for it.
+Dreadnot supports Node.js - you can use any technology or topology that suits you, as long as you can find a library for it.
 
 ## Running Dreadnot
 

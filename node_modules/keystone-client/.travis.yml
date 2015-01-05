@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - 0.6
+
+before_script: npm run-script lint
+script: npm run-script lint
+
+notifications:
+  email:
+    - tomaz+travisci@tomaz.me
