@@ -5,8 +5,8 @@
     "dreadnot": "./bin/dreadnot"
   },
   "scripts": {
-    "test": "node_modules/.bin/tape test/*.js",
-    "lint": "node_modules/.bin/jshint lib/**/*.js --config jshint.json"
+    "lint": "node_modules/.bin/jshint lib/**/*.js --config jshint.json",
+    "test": "mocha"
   },
   "main": "lib/dreadnot.js",
   "repository": {
@@ -28,8 +28,10 @@
     "Justin Gallardo <justin.gallardo@gmail.com>",
     "Michael Burns <maburns@gmail.com>"
   ],
+  "version": "0.1.4",
   "dependencies": {
-    "async": "^1.0.0",
+    "async": "0.1.12",
+    "chai": "^3.4.0",
     "connect": "1.7.x",
     "emailjs": "0.1.19",
     "express": "2.5.6",
@@ -41,12 +43,15 @@
     "logmagic": "0.1.4",
     "markdown": "0.3.1",
     "mkdirp": "0.2.1",
+    "mocha": "^2.3.3",
     "node-hipchat": "0.1.0",
     "node-slackr": "0.1.0",
     "optimist": "0.2.0",
     "request": "2.9.2",
     "socket.io": "0.8.7",
-    "sprintf-js": "^1.0.3"
+    "sprintf-js": "^1.0.3",
+    "rewire": "^2.3.4",
+    "slack-notify": "0.1.1"
   },
   "analyze": true,
   "license": "Apache 2.0",
