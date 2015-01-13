@@ -6,6 +6,10 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
+  "scripts": {
+    "pretest": "./lint.sh",
+    "test": "mocha"
+  },
   "version": "0.1.4",
   "dependencies": {
     "async": "0.1.12",
