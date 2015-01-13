@@ -6,6 +6,10 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
+  "scripts": {
+    "pretest": "./lint.sh",
+    "test": "mocha"
+  },
   "version": "0.1.4",
   "dependencies": {
     "async": "0.1.12",
@@ -25,7 +29,10 @@
     "request": "2.9.2",
     "slack-notify": "0.1.1",
     "socket.io": "0.8.7",
-    "sprintf": "0.1.1"
+    "sprintf": "0.1.1",
+    "mocha": "https://github.com/mochajs/mocha/archive/1.21.5.tar.gz",
+    "chai": "1.10.0",
+    "rewire": "2.1.3"
   },
   "engines": {
     "node": ">=0.4.1 <0.7.0"
