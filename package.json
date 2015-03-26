@@ -23,7 +23,7 @@
     "node-hipchat": "0.1.0",
     "optimist": "0.2.0",
     "request": "2.9.2",
-    "slack-notify": "0.1.1",
+    "node-slackr": "0.1.0",
     "socket.io": "0.8.7"
   },
   "engines": {
