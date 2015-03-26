@@ -24,8 +24,7 @@
     "optimist": "0.2.0",
     "request": "2.9.2",
     "slack-notify": "0.1.1",
-    "socket.io": "0.8.7",
-    "sprintf": "0.1.1"
+    "socket.io": "0.8.7"
   },
   "engines": {
     "node": ">=0.4.1 <0.7.0"
