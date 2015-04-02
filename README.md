@@ -24,9 +24,21 @@ exports.config = {
 
   // Base URL to access dreadnot (used in IRC, email, Hipchat)
   default_url: 'http://example.com',
+  
+  // Dreadnot can use an htpasswd ("htpasswd") file or LDAP ("ldap") for auth 
+  auth_method: 'htpasswd',
 
   // Dreadnot uses an htpasswd file (with support for md5 and sha1) for auth
   htpasswd_file: '/etc/dreadnot/htpasswd',
+  
+  // If auth_method is set to 'ldap', the following LDAP configuration is used for auth validation
+  ldap:{
+    url: 'ldap://ipa:389',
+    adminDn: 'uid=freeipa-bin,cn=users,cn=accounts,dc=somecompany,dc=com',
+    adminPassword: 'secret',
+    searchBase: 'cn=users,cn=accounts,dc=somecompany,dc=com',
+    searchFilter: '(&(memberOf=cn=dreadnot,cn=groups,cn=accounts,dc=somecompany,dc=com)(uid={{username}}))'
+  },
 
   // Each stack represents a code base that should be deployed to one or more regions
   stacks: {

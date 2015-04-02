@@ -6,7 +6,7 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
-  "version": "0.1.4",
+  "version": "0.1.6",
   "dependencies": {
     "async": "0.1.12",
     "connect": "1.7.x",
@@ -17,6 +17,7 @@
     "jade": "0.20.0",
     "jshint": "0.7.1",
     "keystone-client": "0.3.0",
+    "ldapauth": "^2.2.4",
     "logmagic": "0.1.4",
     "markdown": "0.3.1",
     "mkdirp": "0.2.1",
@@ -27,6 +28,6 @@
     "socket.io": "0.8.7"
   },
   "engines": {
-    "node": ">=0.4.1 <0.7.0"
+    "node": ">=0.4.1 <0.11.0"
   }
 }
