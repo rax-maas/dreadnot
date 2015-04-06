@@ -8,7 +8,7 @@
   ],
   "version": "0.1.4",
   "dependencies": {
-    "async": "0.1.12",
+    "async": "0.9.0",
     "connect": "1.7.x",
     "emailjs": "0.1.19",
     "express": "2.5.6",
@@ -23,7 +23,7 @@
     "node-hipchat": "0.1.0",
     "optimist": "0.2.0",
     "request": "2.9.2",
-    "slack-notify": "0.1.1",
+    "node-slackr": "0.1.0",
     "socket.io": "0.8.7"
   },
   "engines": {
