@@ -1,4 +1,4 @@
 default: lint
 
 lint:
-	./lint.sh
+	npm test
