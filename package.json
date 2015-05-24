@@ -1,12 +1,30 @@
 {
   "name": "dreadnot",
-  "bin": "./bin/dreadnot",
+  "version": "0.1.4",
+  "bin": {
+    "dreadnot": "./bin/dreadnot"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/jshint lib/**/*.js --config jshint.json"
+  },
+  "main": "lib/dreadnot.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/racker/dreadnot"
+  },
+  "bugs": {
+    "url": "https://github.com/racker/dreadnot/issues"
+  },
+  "keywords": [
+    "deployment",
+    "deployinator"
+  ],
+  "description": "Dreadnot is a 'one click' deploy tool written in Node.js.",
   "contributors": [
     "Russell Haering <russellhaering@gmail.com>",
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>"
   ],
-  "version": "0.1.4",
   "dependencies": {
     "async": "0.1.12",
     "connect": "1.7.x",
@@ -26,6 +44,8 @@
     "slack-notify": "0.1.1",
     "socket.io": "0.8.7"
   },
+  "analyze": true,
+  "license": "Apache 2.0",
   "engines": {
     "node": ">=0.4.1 <0.7.0"
   }
