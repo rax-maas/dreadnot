@@ -141,6 +141,17 @@ be suitable to hardcode a list of hosts.
 
 Dreadnot supports Node.js - you can use any technology or topology that suits you, as long as you can find a library for it.
 
+## Development
+
+To create a development environment, you'll need [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads). Once installed, run:
+
+```
+    vagrant up
+
+```
+
+Then visit http://localhost:8000
+
 ## Running Dreadnot
 
 ```
