@@ -152,6 +152,17 @@ To create a development environment, you'll need [Vagrant](https://www.vagrantup
 
 Then visit http://localhost:8000
 
+Log into the VM by running and running common commands:
+
+```
+    vagrant ssh
+    sudo restart dreadnot
+
+    cd dreadnot/example
+
+    sudo cat /var/log/upstart/dreadnot.log
+```
+
 ## Running Dreadnot
 
 ```
