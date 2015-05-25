@@ -29,7 +29,7 @@
     "Michael Burns <maburns@gmail.com>"
   ],
   "dependencies": {
-    "async": "0.1.12",
+    "async": "^1.0.0",
     "connect": "1.7.x",
     "emailjs": "0.1.19",
     "express": "2.5.6",
