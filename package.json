@@ -26,7 +26,8 @@
     "request": "2.9.2",
     "slack-notify": "0.1.1",
     "socket.io": "0.8.7",
-    "sprintf": "0.1.1"
+    "sprintf": "0.1.1",
+    "pipedrive-newrelic": "git+ssh://git@github.com/pipedrive/pipedrive-newrelic.git#remove-root-path-module"
   },
   "engines": {
     "node": ">=0.4.1 <0.11.0"
