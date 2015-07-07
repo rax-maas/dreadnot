@@ -1,3 +1,7 @@
 local_settings.js
 /stacks
 /example/data
+.vagrant/
+node_modules
+.npm
+.idea

@@ -1,14 +1,35 @@
 {
   "name": "dreadnot",
-  "bin": "./bin/dreadnot",
+  "version": "0.1.4",
+  "bin": {
+    "dreadnot": "./bin/dreadnot"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/tape test/*.js",
+    "lint": "node_modules/.bin/jshint lib/**/*.js --config jshint.json"
+  },
+  "main": "lib/dreadnot.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/racker/dreadnot"
+  },
+  "bugs": {
+    "url": "https://github.com/racker/dreadnot/issues"
+  },
+  "keywords": [
+    "deployment",
+    "deployinator"
+  ],
+  "description": "Dreadnot is a 'one click' deploy tool written in Node.js.",
   "contributors": [
     "Russell Haering <russellhaering@gmail.com>",
     "Ryan Phillips <ryan.phillips@rackspace.com>",
-    "Brandon Philips <brandon@ifup.org>"
+    "Brandon Philips <brandon@ifup.org>",
+    "Justin Gallardo <justin.gallardo@gmail.com>",
+    "Michael Burns <maburns@gmail.com>"
   ],
-  "version": "0.1.4",
   "dependencies": {
-    "async": "0.9.0",
+    "async": "^1.0.0",
     "connect": "1.7.x",
     "emailjs": "0.1.19",
     "express": "2.5.6",
@@ -26,7 +47,9 @@
     "node-slackr": "0.1.0",
     "socket.io": "0.8.7"
   },
-  "engines": {
-    "node": ">=0.4.1 <0.7.0"
+  "analyze": true,
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "tape": "^4.0.0"
   }
 }

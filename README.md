@@ -1,10 +1,14 @@
 # Dreadnot - deploy without dread
 
+[![Build Status](https://img.shields.io/travis/racker/dreadnot.svg?style=flat)](https://travis-ci.org/racker/dreadnot)
+[![npm](https://img.shields.io/npm/v/dreadnot.svg?style=flat)](https://www.npmjs.com/package/dreadnot)
+[![License](https://img.shields.io/badge/license-Apache%20v2.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
+
 Dreadnot is a 'one click' deploy tool written in [Node.js](http://www.nodejs.org/).
 
 Dreadnot was heavily inspired by [Etsy's Deployinator](https://github.com/etsy/deployinator/).
 
-![Deploy all the branches](http://desmond.imageshack.us/Himg442/scaled.php?server=442&filename=deployallthebranches.png&res=medium)
+![Deploy all the branches](https://raw.githubusercontent.com/wiki/racker/dreadnot/images/dat.jpg)
 
 ## Configuration
 
@@ -140,6 +144,28 @@ be suitable to hardcode a list of hosts.
 **Does Dreadnot support SVN?**
 
 Dreadnot supports Node.js - you can use any technology or topology that suits you, as long as you can find a library for it.
+
+## Development
+
+To create a development environment, you'll need [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads). Once installed, run:
+
+```
+    vagrant up
+
+```
+
+Then visit http://localhost:8000
+
+Log into the VM by running and running common commands:
+
+```
+    vagrant ssh
+    sudo restart dreadnot
+
+    cd dreadnot/example
+
+    sudo cat /var/log/upstart/dreadnot.log
+```
 
 ## Running Dreadnot
 
