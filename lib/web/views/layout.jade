@@ -7,9 +7,12 @@ html(lang='en')
     link(rel='stylesheet', href='/static/css/dreadnot.css', type='text/css')
     link(rel='icon', type="image/png", href='/static/dreadnot.png')
 
+    meta(charset='UTF-8')
+
     script(src='/static/js/jquery-1.7.0.min.js')
     script(src='/static/js/bootstrap-modal.js')
     script(src='/static/js/dreadnot.js')
+    != newrelic.getBrowserTimingHeader()
     block scripts
 
   body
