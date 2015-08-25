@@ -102,8 +102,13 @@ file that exports
   `environment` and `region` fields, and a callback taking `(err,
   deployed_revision)`.
 * A `targets` hash that maps target names to lists of task names. Currently,
-  the only supported target is `deploy` which defaults to
-  `['task_preDeploy', 'task_deploy', 'task_postDeploy']`.
+  the only supported targets are `deploy`, which defaults to
+  `['task_preDeploy', 'task_deploy', 'task_postDeploy']`, and `finally` which
+  does not have a default value. You should use the `finally` target if there are
+  any tasks you would like to run every time, regardless of the success or failure
+  of the tasks in `deploy` (i.e. re-enable monitoring alerts). The tasks in the `finally`
+  target itself are each dependent on the success of the last task in the target, so
+  an error in one will prevent the rest from running.
 * One or more "task functions" whose names are prefixed with `task_`. Each
   task function takes:
   1.  A "stack" object. The most useful fields on the stack are `stackConfig`

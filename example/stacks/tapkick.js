@@ -31,8 +31,19 @@ exports.task_deploy = function(stack, baton, args, callback) {
   ], callback);
 };
 
+
+exports.task_cleanup = function(stack, baton, args, callback) {
+  baton.log.info('This gets logged whether the deploy succeeds or fails');
+  callback();
+};
+
+
 exports.targets = {
   'deploy': [
-    'task_deploy',
+    'task_deploy'
+  ],
+
+  'finally': [
+    'task_cleanup'
   ]
 };
