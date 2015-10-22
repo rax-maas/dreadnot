@@ -158,18 +158,13 @@ To create a development environment, you'll need [Vagrant](https://www.vagrantup
     vagrant up
 
 ```
-
-Then visit http://localhost:8000
-
-Log into the VM by running and running common commands:
-
+Now ssh into the vagrant box you just provisioned.  
+And furthermore cd into dreadnot/example. Run the provision script.  
+Dreadnot should be running on localhost:8000 now.
 ```
-    vagrant ssh
-    sudo restart dreadnot
-
-    cd dreadnot/example
-
-    sudo cat /var/log/upstart/dreadnot.log
+vagrant ssh
+cd dreadnot/example
+sudo ./provision.sh
 ```
 
 ## Running Dreadnot
@@ -178,6 +173,7 @@ Log into the VM by running and running common commands:
 	npm install dreadnot -g
 
 ```
+Alternatively, when developing, you can find a compiled dreadnot binary in the bin folder. 
 
 Dreadnot takes a number of options on the command line. The defaults are:
 
