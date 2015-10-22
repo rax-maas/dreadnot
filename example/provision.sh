@@ -10,7 +10,7 @@ fi
 
 # this repo is hardcoded in example/local_settings.js
 if [ ! -d "/data/tapkick" ]; then
-  git clone git://github.com/philips/tapkick.git /data/tapkick
+  git clone https://github.com/philips/tapkick.git /data/tapkick
   cd /data/tapkick && git reset --hard 'HEAD^^^'
   chown -R vagrant:vagrant /data/tapkick
 fi
