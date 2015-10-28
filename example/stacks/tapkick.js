@@ -1,12 +1,6 @@
-var exec = require('child_process').exec;
-
-var async = require('async');
-
-var BuildBot = require('util/buildbot').BuildBot;
-var knife = require('util/knife');
-var misc = require('util/misc');
-var sprintf = require('util/sprintf');
-var git = require('util/git');
+var async = require('async'),
+    misc = require('util/misc'),
+    git = require('util/git');
 
 
 exports.get_deployedRevision = function(args, callback) {
