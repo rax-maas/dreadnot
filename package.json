@@ -51,7 +51,6 @@
     "rewire": "^2.3.4",
     "request": "2.9.2",
     "socket.io": "0.8.7",
-    "sprintf-js": "^1.0.3",
     "slack-notify": "0.1.1"
   },
   "analyze": true,
