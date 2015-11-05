@@ -30,6 +30,7 @@
   ],
   "version": "0.1.4",
   "dependencies": {
+    "qs": "3.1.0",
     "async": "0.1.12",
     "chai": "^3.4.0",
     "connect": "1.7.x",
