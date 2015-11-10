@@ -13,7 +13,7 @@ exports.config = {
       regions: ['all']
     },
   },
-  tapkick_dir: '/data/tapkick',
+  tapkick_dir: 'data/tapkick',
   github: {
     organization: 'philips'
   },
