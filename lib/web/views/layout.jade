@@ -9,6 +9,7 @@ html(lang='en')
 
     script(src='/static/js/jquery-1.7.0.min.js')
     script(src='/static/js/bootstrap-modal.js')
+    script(src='/static/js/ansi_up.js')
     script(src='/static/js/dreadnot.js')
     block scripts
 
@@ -31,7 +32,7 @@ html(lang='en')
               a(href='/logout') log out
             - else
               a(href='/login?next=#{url}') Log in
-    
+
     div.container
       div.content
         div.page-header
