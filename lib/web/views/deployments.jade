@@ -1,7 +1,7 @@
 extends layout-deploy
 
 block scripts
-  - if (user.authorized && wmsg) 
+  - if (user.authorized && wmsg)
     script(type='text/javascript')
       $(function() { dreadNow() });
 
@@ -30,12 +30,12 @@ block content
       p !{helpers.buildDiffSegment(data.stack.github_href, data.region.deployed_revision, data.stack.latest_revision)}
       p
         input(type='hidden', name='ack_warning', value='#{wmsg ? "false" : "true"}')#wack
-        input(type='submit', value='Deploy').btn.success
+        input(type='submit', value='Deploy').btn.btn-success.btn-lg
 
   if data.deployments.length === 0
     p No Deployments
   else
-    table
+    table.table
       thead
         tr
           th \#
@@ -54,8 +54,8 @@ block content
           th
             - if (deployment.finished)
               - if (deployment.success)
-                span.label.success Success
+                span.label.label-success Success
               - else
-                span.label.important Failed
+                span.label.label-danger Failed
             - else
-              span.label In Progress...
+              span.label.label-primary In Progress...
