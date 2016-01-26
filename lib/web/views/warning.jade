@@ -14,14 +14,14 @@ block warning
 block content
   form(method='post', action='/warning').form-stacked
     fieldset
-      div.clearfix
+      div.form-group
         label(for='warning_text') Warning Text
         div.input
-          textarea(name='warning_text').xxlarge #{wmsg}
+          textarea(name='warning_text').input-lg.form-control #{wmsg}
       div.actions
-        button(type='submit', name='action', value='save').btn.primary Save
+        button(type='submit', name='action', value='save').btn.btn-default Save
         | &nbsp;
         - if (wmsg)
-          button(type='submit', name='action', value='clear').btn.danger Clear Warning
+          button(type='submit', name='action', value='clear').btn.btn-danger Clear Warning
         - else
-          button(type='submit', name='action', value='clear').btn.danger.disabled Clear Warning
+          button(type='submit', name='action', value='clear').btn.btn-danger.disabled Clear Warning
