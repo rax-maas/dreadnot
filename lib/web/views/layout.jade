@@ -14,17 +14,18 @@ html(lang='en')
     block scripts
 
   body
-    div.topbar
-      div.fill
-        div.container
-          a(href='/').brand #{title}
-          ul
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      div.container
+        div.navbar-header
+          a(href='/').navbar-brand #{title}
+        div.navbar-collapse.collapse
+          ul.nav.navbar-nav
             block topnav
               li
                 a(href='/') Deploy
               li
                 a(href='/warning') Warning Message
-          p.pull-right
+          p.navbar-text.navbar-right
             - if (!user)
               | Not signed in
             - else if (user.authorized)
@@ -46,7 +47,7 @@ html(lang='en')
 
         block warning
           - if (user && wmsg)
-            div.alert-message.block-message
+            div.alert.alert-danger.block-message
               !{helpers.markdown.toHTML(wmsg)}
 
         block content

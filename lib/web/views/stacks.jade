@@ -4,10 +4,10 @@ block content
   - each stack in data.stacks
     div.stack
       h2 #{stack.name}
-      p Latest Revision: 
+      p Latest Revision:
         a(href='#{helpers.ghCommitUrl(stack.github_href, stack.latest_revision)}')
           #{helpers.trimRevision(stack.latest_revision)}
-      table
+      table.table
         thead
           tr
             th Region
@@ -27,14 +27,14 @@ block content
                 #{helpers.prettyTimeSince(region.latest_deployment.time)}
             td
               - if (!region.latest_deployment)
-                span.label No deployments yet
+                span.label.label-default No deployments yet
               - else
                 - if (!region.latest_deployment.finished)
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label
+                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.label-primary
                     | Deployment \##{region.latest_deployment.name} in progress
                 - else if (region.latest_deployment.success)
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.success
+                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.label-success
                     | Deployment \##{region.latest_deployment.name} succeeded
                 - else
-                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.important
+                  a(href='/stacks/#{stack.name}/regions/#{region.name}/deployments/#{region.latest_deployment.name}').label.label-danger
                     | Deployment \##{region.latest_deployment.name} failed
