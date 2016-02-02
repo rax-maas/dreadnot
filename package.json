@@ -41,7 +41,6 @@
     "jade": "0.20.0",
     "jshint": "0.7.1",
     "keystone-client": "0.3.1",
-    "ldapauth": "^2.2.4",
     "logmagic": "0.1.4",
     "markdown": "0.3.1",
     "mkdirp": "0.2.1",
