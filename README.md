@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/racker/dreadnot.svg?style=flat)](https://travis-ci.org/racker/dreadnot)
 [![npm](https://img.shields.io/npm/v/dreadnot.svg?style=flat)](https://www.npmjs.com/package/dreadnot)
+[![Inline docs](http://inch-ci.org/github/racker/dreadnot.png)](http://inch-ci.org/github/racker/dreadnot)
 [![License](https://img.shields.io/badge/license-Apache%20v2.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 
 Dreadnot is a 'one click' deploy tool written in [Node.js](http://www.nodejs.org/).
