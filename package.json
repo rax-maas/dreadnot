@@ -26,10 +26,12 @@
     "Ryan Phillips <ryan.phillips@rackspace.com>",
     "Brandon Philips <brandon@ifup.org>",
     "Justin Gallardo <justin.gallardo@gmail.com>",
-    "Michael Burns <maburns@gmail.com>"
+    "Michael Burns <maburns@gmail.com>",
+    "Rob Emanuele <rob@emanuele.us>"
   ],
   "version": "0.1.4",
   "dependencies": {
+    "bcryptjs": "2.3.0",
     "qs": "3.1.0",
     "async": "0.1.12",
     "chai": "^3.4.0",
