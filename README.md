@@ -29,9 +29,15 @@ exports.config = {
 
   // Base URL to access dreadnot (used in IRC, email, Hipchat)
   default_url: 'http://example.com',
+  
+   // Dreadnot can use an htpasswd ("htpasswd") for auth 
+   // If login_required: True is set then the auth method defaults
+   // to 'htpasswd' else it'll be set as passthru
+   auth_method: 'htpasswd',
 
   // Dreadnot uses an htpasswd file (with support for md5 and sha1) for auth
   htpasswd_file: '/etc/dreadnot/htpasswd',
+
 
   // Each stack represents a code base that should be deployed to one or more regions
   stacks: {
