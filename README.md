@@ -30,7 +30,7 @@ exports.config = {
   // Base URL to access dreadnot (used in IRC, email, Hipchat)
   default_url: 'http://example.com',
 
-  // Dreadnot uses an htpasswd file (with support for md5 and sha1) for auth
+  // Dreadnot uses an htpasswd file (with support for bcrypt, md5 and sha1) for auth
   htpasswd_file: '/etc/dreadnot/htpasswd',
 
   // Each stack represents a code base that should be deployed to one or more regions
@@ -67,7 +67,7 @@ exports.config = {
       nick: 'staging-dreadnot',
       channels: {'irc.freenode.net': ['#public-channel', '#private-channel pass']}
     },
-    
+
     // An email notification plugin
     email: {
       server: {
@@ -175,7 +175,7 @@ Log into the VM by running and running common commands:
     npm install dreadnot -g
 ```
 
-Alternatively, when developing, you can find a compiled dreadnot binary in the bin folder. 
+Alternatively, when developing, you can find a compiled dreadnot binary in the bin folder.
 
 Dreadnot takes a number of options on the command line. The defaults are:
 
