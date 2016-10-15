@@ -29,7 +29,6 @@
     "Michael Burns <maburns@gmail.com>",
     "Rob Emanuele <rob@emanuele.us>"
   ],
-  "version": "0.1.4",
   "dependencies": {
     "bcryptjs": "2.3.0",
     "qs": "3.1.0",
