@@ -2,9 +2,8 @@
 
 
 function streamLogs(log) {
-  var logPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'log'].join('/');
+  var logPath = ['stacks', log.stack, 'regions', log.region, 'deployments', log.deployment, 'log'].join('/'),
       dest = $('pre.deployment_log');
-
   function pushEntry(entry) {
     var scroll = Math.abs(dest[0].scrollTop - (dest[0].scrollHeight - dest[0].offsetHeight)) < 10,
         line, table;

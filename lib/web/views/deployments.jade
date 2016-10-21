@@ -14,15 +14,17 @@ block upnav
 block content
   - if (user.authorized)
     - if (wmsg)
-      div#dread-now.modal.hide.fade
-        div.modal-header
-          a(href='#').close &times;
-          h3 Dread Now
-        div.modal-body
-          !{helpers.markdown.toHTML(wmsg)}
-        div.modal-footer
-          a(href='#')#fearless.btn.primary Deploy Anyway
-          a(href='#')#fearful.btn.secondary Cancel
+      div#dread-now.modal.fade(tabindex="-1", role="dialog")
+        div.modal-dialog(role="document")
+          div.modal-content
+            div.modal-header
+              a(href='#').close &times;
+              h3.modal-title Dread Now
+            div.modal-body
+              !{helpers.markdown.toHTML(wmsg)}
+            div.modal-footer
+              button.btn.btn-default(type="button", data-dismiss="modal")#fearfull Close
+              button.btn.btn-primary(type="button")#fearless Deploy
 
     form(method='post', action='/stacks/#{data.stack.name}/regions/#{data.region.name}')#deploy-form
       p
