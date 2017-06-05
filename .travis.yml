@@ -21,5 +21,4 @@ deploy:
 
 notifications:
   email:
-  - justin.gallardo@gmail.com
   - michael@mirwin.net
