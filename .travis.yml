@@ -1,22 +1,25 @@
 language: node_js
 sudo: false
 node_js:
-- '0.10'
-- '0.12'
-- 4.0.0
-before_install:
-- npm install -g npm
+  - "4.0.0"
+
 script:
-- npm run-script lint
-- npm test
-notifications:
-  email:
-  - justin.gallardo@gmail.com
-  - maburns@gmail.com
+  - "npm run-script lint"
+  - "npm test"
+  - "npm install"
+  - "cd ../ && tar -cvzf dn-bundle-$TRAVIS_COMMIT.tar.gz --exclude=.git* --exclude=*.tar.gz  dreadnot/"
+
 deploy:
   provider: releases
   api_key:
     secure: VtoHE6l7VFlzdFsRAiW9ajNFKFqOj8dt8jkkG3H6wsLbL+al6E8q/EYPhgcQCWCZGnnXEk0bNX30uwR7WUS+kl81gajED/9jfm90PXt/PlSeSycJ17Qsc2aBerb74SoRfvyD+m8P9+3Ltwuc2k17WTTEfB57oJ8jshWmFvVkxaQ=
-  file: dn-bundle.tar.gz
+  file_glob: true
+  file: '*.tar.gz'
+  skip_cleanup: true
   on:
-    repo: racker/dreadnot
+    tags: true
+
+notifications:
+  email:
+  - justin.gallardo@gmail.com
+  - maburns@gmail.com
