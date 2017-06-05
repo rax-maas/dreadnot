@@ -1,20 +1,22 @@
 language: node_js
-
 sudo: false
-
 node_js:
-  - "0.10"
-  - "0.12"
-  - "4.0.0"
-
+- '0.10'
+- '0.12'
+- 4.0.0
 before_install:
-  - "npm install -g npm"
-
+- npm install -g npm
 script:
-  - "npm run-script lint"
-  - "npm test"
-
+- npm run-script lint
+- npm test
 notifications:
   email:
-    - justin.gallardo@gmail.com
-    - maburns@gmail.com
+  - justin.gallardo@gmail.com
+  - maburns@gmail.com
+deploy:
+  provider: releases
+  api_key:
+    secure: VtoHE6l7VFlzdFsRAiW9ajNFKFqOj8dt8jkkG3H6wsLbL+al6E8q/EYPhgcQCWCZGnnXEk0bNX30uwR7WUS+kl81gajED/9jfm90PXt/PlSeSycJ17Qsc2aBerb74SoRfvyD+m8P9+3Ltwuc2k17WTTEfB57oJ8jshWmFvVkxaQ=
+  file: dn-bundle.tar.gz
+  on:
+    repo: racker/dreadnot
