@@ -52,7 +52,7 @@
     "optimist": "0.6.1",
     "rewire": "^2.3.4",
     "request": "2.75.0",
-    "socket.io": "1.5.0",
+    "socket.io": "2.5.0",
     "slack-notify": "0.1.6",
     "underscore": "^1.8.3"
   },
