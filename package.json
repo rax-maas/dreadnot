@@ -32,7 +32,7 @@
   "dependencies": {
     "bcryptjs": "2.3.0",
     "qs": "6.2.1",
-    "async": "2.1.1",
+    "async": "2.6.4",
     "chai": "^3.4.0",
     "connect": "3.5.x",
     "emailjs": "^1.0.8",
