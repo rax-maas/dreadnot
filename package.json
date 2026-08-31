@@ -36,7 +36,7 @@
     "chai": "^3.4.0",
     "connect": "3.5.x",
     "emailjs": "^1.0.8",
-    "express": "4.14.0",
+    "express": "4.22.0",
     "graphite": "0.0.7",
     "irc": "0.5.0",
     "jade": "1.11.0",
