@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "bcryptjs": "2.3.0",
-    "qs": "6.2.1",
+    "qs": "6.15.2",
     "async": "2.1.1",
     "chai": "^3.4.0",
     "connect": "3.5.x",
